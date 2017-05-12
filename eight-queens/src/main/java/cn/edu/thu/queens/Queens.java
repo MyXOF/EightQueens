@@ -56,7 +56,7 @@ public class Queens {
 	}
 	
 	public static void main(String[] args) {
-		Queens queens = new Queens(13);
+		Queens queens = new Queens(12);
 		queens.init();
 		long startTime = System.currentTimeMillis(); 
 		queens.caculateQueensWithoutParallel(0);

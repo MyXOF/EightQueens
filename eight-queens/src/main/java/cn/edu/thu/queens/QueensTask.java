@@ -1,7 +1,9 @@
 package cn.edu.thu.queens;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.ForkJoinTask;
 import java.util.concurrent.RecursiveTask;
@@ -36,7 +38,6 @@ public class QueensTask extends RecursiveTask<List<int[]>>{
 		}
 		
 		int middle = (end + start) / 2;
-		
 		QueensTask subtask1 = new QueensTask(chessboardSize, start, middle);
 		QueensTask subtask2 = new QueensTask(chessboardSize, middle, end);
         invokeAll(subtask1, subtask2);
@@ -45,7 +46,6 @@ public class QueensTask extends RecursiveTask<List<int[]>>{
         List<int[]> result2 = subtask2.join();
         
         List<int[]> result = mergeResult(result1, result2);
-
         return result;
 	}
 	
@@ -56,7 +56,6 @@ public class QueensTask extends RecursiveTask<List<int[]>>{
 				
 				if(level == chessboardSize - 1){
 					if(!isChessboardExisted(chessboard)){
-//						Utils.showChessboard(chessboard, chessboardSize, chessboardSize);
 						chessboards.add(chessboard.clone());
 					}
 					chessboard[level] = -1;
@@ -83,20 +82,14 @@ public class QueensTask extends RecursiveTask<List<int[]>>{
 		
 		if(len1 == 0) return resultList2;
 		if(len2 == 0) return resultList1;
-		
+		Set<Chessboard> set = new HashSet<>();
 		for(int[] i : resultList1){
 			resultMerge.add(i);
+			set.addAll(Utils.getAllIsomorphicChessboards(i));
 		}
-		
 		for(int[] i : resultList2){
-			boolean flag = false;
-			for(int[] j : resultList1){
-				if(Utils.isTwoChessboardIsomorphism(i, j)){
-					flag = true;
-					break;
-				}
-			}
-			if(!flag){
+			if(!set.contains(Utils.convertArrayToString(i))){
+				set.addAll(Utils.getAllIsomorphicChessboards(i));
 				resultMerge.add(i);
 			}
 		}
@@ -112,21 +105,6 @@ public class QueensTask extends RecursiveTask<List<int[]>>{
 		long endTime = System.currentTimeMillis();
 		System.out.println(result.size());
 		System.out.println("Time cost: "+(endTime-startTime)+"ms");
-		
-//		for(int[] i: result){
-//			Utils.showChessboard(i, size, size);
-//		}
-		
-//		List<int[]> l1 = new ArrayList<>();
-//		List<int[]> l2 = new ArrayList<>();
-//		int[] a1 = {3, 0, 2, 4, 1};
-//		int[] a2 = {3, 1, 4, 2, 0};
-//		int[] a3 = {4, 1, 3, 0, 2};
-//		
-//		l1.add(a1);
-//		l1.add(a2);
-//		l2.add(a3);
-//		System.out.println(mergeResult(l1, l2).size());
-		
+
 	}
 }

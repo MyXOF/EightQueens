@@ -84,8 +84,8 @@ public class Utils {
 		return false;
 	}
 	
-	public static Set<String> getAllIsomorphicChessboards(int[] chessboard){
-		Set<String> chessboards = new HashSet<String>();
+	public static Set<Chessboard> getAllIsomorphicChessboards(int[] chessboard){
+		Set<Chessboard> chessboards = new HashSet<Chessboard>();
 		
 		addChessboards(chessboards, chessboard);
 		
@@ -101,7 +101,7 @@ public class Utils {
 		return chessboards;
 	}
 	
-	private static void addChessboards(Set<String> chessboards, int[] chessboard){
+	private static void addChessboards(Set<Chessboard> chessboards, int[] chessboard){
 		chessboards.add(convertArrayToString(chessboard));
 		
 		int[] newboard1 = roateNinetyDegree(chessboard);
@@ -114,12 +114,8 @@ public class Utils {
 		chessboards.add(convertArrayToString(newboard3));
 	}
 	
-	public static String convertArrayToString(int[] input){
-		StringBuilder builder = new StringBuilder();
-		for(int i: input){
-			builder.append(i);
-		}
-		return builder.toString();
+	public static Chessboard convertArrayToString(int[] input){
+		return new Chessboard(input);
 	}
 	
 	public static boolean isTwoChessboardSame(int[] chessboard1, int[] chessboard2, int len){
