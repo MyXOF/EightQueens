@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>国际象棋棋盘</title>
+        <script type="text/javascript">
+            var str="<table cellpadding='0' cellspacing='0'>";
+            var off=true;
+            for(i=1;i<=8;i++){
+                str+="<tr>";
+                for(j=1;j<=8;j++){
+                    if(off){
+                        off=!off;
+                        str+='<td class="td01"></td>';
+                    }
+                    else{
+                        off=!off;
+                        str+='<td class="td02"></td>';
+                    }
+                }
+                off=!off;
+                str+="</tr>";
+            }
+            str+="</table>";
+            document.write(str);
+        </script>
+        
+        <style type="text/css">
+            table{
+                border: 1px solid #000;
+            }
+            td{
+                width: 100px;
+                height: 100px;
+                background: #ff0;
+            }
+            .td01{
+                background: #fff;
+            }
+            .td02{
+                background: #000;
+            }
+        </style>
+    </head>
+    <body>
+    </body>
+</html>
