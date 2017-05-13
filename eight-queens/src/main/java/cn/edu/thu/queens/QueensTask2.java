@@ -8,7 +8,7 @@ import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.ForkJoinTask;
 import java.util.concurrent.RecursiveTask;
 
-public class QueensTask extends RecursiveTask<List<int[]>>{
+public class QueensTask2 extends RecursiveTask<List<int[]>>{
 	private static final long serialVersionUID = 7134244215582255826L;
 
 	private int chessboardSize;
@@ -19,7 +19,7 @@ public class QueensTask extends RecursiveTask<List<int[]>>{
 	
 	private final int THRESHOLD = 2;
 	
-	public QueensTask(int chessboardSize, int start, int end){
+	public QueensTask2(int chessboardSize, int start, int end){
 		this.chessboardSize = chessboardSize;
 		this.chessboards = new ArrayList<>();
 		this.chessboard = new int[chessboardSize];
@@ -38,8 +38,8 @@ public class QueensTask extends RecursiveTask<List<int[]>>{
 		}
 		
 		int middle = (end + start) / 2;
-		QueensTask subtask1 = new QueensTask(chessboardSize, start, middle);
-		QueensTask subtask2 = new QueensTask(chessboardSize, middle, end);
+		QueensTask2 subtask1 = new QueensTask2(chessboardSize, start, middle);
+		QueensTask2 subtask2 = new QueensTask2(chessboardSize, middle, end);
         invokeAll(subtask1, subtask2);
         
         List<int[]> result1 = subtask1.join();
@@ -97,9 +97,9 @@ public class QueensTask extends RecursiveTask<List<int[]>>{
 	}
 	
 	public static void main(String[] args) {
-		int size = 13;
+		int size = 8;
 		ForkJoinPool pool = new ForkJoinPool(10);
-		ForkJoinTask<List<int[]>> task = new QueensTask(size, 0, size);
+		ForkJoinTask<List<int[]>> task = new QueensTask2(size, 0, size / 2 +1);
 		long startTime = System.currentTimeMillis(); 
 		List<int[]> result = pool.invoke(task);
 		long endTime = System.currentTimeMillis();
