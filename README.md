@@ -3,7 +3,7 @@ Solve eight queens puzzle with parallel algorithm
 
 ## Requirements
 
-Before building this project, make sure the folloing requirements are correctly installed in you running environment. It is recommended to install the lastest version.
+Before building this project, make sure the following requirements are correctly installed in you running environment. It is recommended to install the lastest version.
 
 * Java JDK >= 1.8.0
 * Maven >= 3.3.0
@@ -28,9 +28,17 @@ To display the solution of **Eight queens puzzle**, run
 
 > ./eight-queens-demo.sh
 
-You will see 12 differen solutions.
+You will see 12 different solutions.
 
 ![](./figure/eight-queens-demo.png)
+
+### Different sulotion
+
+To find out how many different solutions for a given N*N chessboard, run
+
+> ./chessboard-diff.sh
+
+![](./figure/chessboard-diff.png)
 
 ### Compare the efficiency of serial and parallel execution
 
@@ -44,7 +52,7 @@ You will see the number of the solution of **N queens puzzle**(in this project, 
 
 ## Documentation
 
-
+See [report]()
 
 ## References
 
