@@ -106,7 +106,7 @@ public class QueensTask2 extends RecursiveTask<List<int[]>>{
 		for(int i = 0; i < result.size(); i++){
 			Utils.showChessboardWithID(i,result.get(i), size, size);
 		}
-		System.out.println("Different chessboard number: "+result.size());
+		System.out.println(String.format("For %d*%d chessboard, different number %d", size,size,result.size()));
 		System.out.println("Time cost: "+(endTime-startTime)+"ms");
 
 	}
