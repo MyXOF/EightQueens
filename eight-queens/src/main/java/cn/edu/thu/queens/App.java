@@ -16,7 +16,7 @@ public class App {
 			long timeCost1 = endTime - startTime;
 			queens.clear();
 			
-			ForkJoinPool pool = new ForkJoinPool(10);
+			ForkJoinPool pool = new ForkJoinPool(16);
 			ForkJoinTask<Long> task = new QueenTask1(i, 0, i);
 			startTime = System.currentTimeMillis(); 
 			Long result = pool.invoke(task);
