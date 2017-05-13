@@ -8,6 +8,7 @@ public class Utils {
 		System.out.println("ID: "+id);
 		showChessboard(chessborad, row, line);
 		System.out.println("------------------");
+		System.out.println();
 	}
 	
 	public static void showChessboard(int chessborad[],int row, int line){

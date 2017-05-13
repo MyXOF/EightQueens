@@ -103,7 +103,10 @@ public class QueensTask2 extends RecursiveTask<List<int[]>>{
 		long startTime = System.currentTimeMillis(); 
 		List<int[]> result = pool.invoke(task);
 		long endTime = System.currentTimeMillis();
-		System.out.println(result.size());
+		for(int i = 0; i < result.size(); i++){
+			Utils.showChessboardWithID(i,result.get(i), size, size);
+		}
+		System.out.println("Different chessboard number: "+result.size());
 		System.out.println("Time cost: "+(endTime-startTime)+"ms");
 
 	}

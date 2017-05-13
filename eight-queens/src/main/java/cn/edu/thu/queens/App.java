@@ -19,11 +19,11 @@ public class App {
 			ForkJoinPool pool = new ForkJoinPool(10);
 			ForkJoinTask<Long> task = new QueenTask1(i, 0, i);
 			startTime = System.currentTimeMillis(); 
-			pool.invoke(task);
+			Long result = pool.invoke(task);
 			endTime = System.currentTimeMillis();
 			long timeCost2 = endTime - startTime;
 			
-			System.out.println(String.format("%d * %d, native %d ms, parallel %d ms", i,i,timeCost1,timeCost2));
+			System.out.println(String.format("%d * %d, chessboard number: %d, native %d ms, parallel %d ms", i,i, result,timeCost1,timeCost2));
 			
 		}
 	}
