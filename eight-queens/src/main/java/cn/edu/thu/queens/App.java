@@ -23,7 +23,7 @@ public class App {
 			endTime = System.currentTimeMillis();
 			long timeCost2 = endTime - startTime;
 			
-			System.out.println(String.format("%d * %d, chessboard number: %d, native %d ms, parallel %d ms", i,i, result,timeCost1,timeCost2));
+			System.out.println(String.format("%d * %d, chessboard number: %d, serial %d ms, parallel %d ms", i,i, result,timeCost1,timeCost2));
 			
 		}
 	}
