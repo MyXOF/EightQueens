@@ -52,7 +52,7 @@ You will see the number of the solution of **N queens puzzle**(in this project, 
 
 ## Documentation
 
-See [report]()
+See our [report](https://github.com/MyXOF/EightQueens/tree/master/doc).
 
 ## References
 
